@@ -13,9 +13,7 @@ class login extends CI_Controller {
 
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-red">','</p>');
-		echo 123;
 		$this->load->model('loginmodel');
-		echo 321;
 	}
 
 	public function index(){
