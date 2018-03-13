@@ -13,7 +13,7 @@ class login extends CI_Controller {
 
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-red">','</p>');
-		$this->load->model('loginModel');
+		$this->load->model('loginmodel');
 	}
 
 	public function index(){
@@ -27,7 +27,7 @@ class login extends CI_Controller {
 			}
 			else{
 				extract($_POST);
-				$login = $this->loginModel->login($username,sha1($password));
+				$login = $this->loginmodel->login($username,sha1($password));
 
 				if(!empty($login)){
 					$this->session->set_userdata('user', $username);
