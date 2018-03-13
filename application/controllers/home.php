@@ -11,7 +11,7 @@ class home extends CI_Controller {
 			header('location:'.base_url().'login');
 		}
 
-		$this->load->model('homemodel');	
+		$this->load->model('homeModel');	
 	}
 
 	public function index(){

@@ -1,6 +1,6 @@
 <?php
 
-class destinationmodel extends CI_Model {
+class destinationModel extends CI_Model {
 
     function __construct()
     {

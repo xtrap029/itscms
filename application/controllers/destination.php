@@ -14,11 +14,11 @@ class destination extends CI_Controller {
 		$this->load->library('form_validation');
 		$this->form_validation->set_error_delimiters('<p class="text-red">','</p>');
 
-		$this->load->model('destinationmodel');	
+		$this->load->model('destinationModel');	
 	}
 
 	public function index(){
-		$data['data'] = $this->destinationmodel->list();
+		$data['data'] = $this->destinationModel->list();
 		$this->load->view('destination_index', $data);
 	}
 
@@ -29,10 +29,10 @@ class destination extends CI_Controller {
 
 			if ($this->form_validation->run() == TRUE){
 				extract($_POST);
-				$exists = $this->destinationmodel->exists($code);
+				$exists = $this->destinationModel->exists($code);
 
 				if(empty($exists)){
-					$this->destinationmodel->add(strtoupper($code), $description);
+					$this->destinationModel->add(strtoupper($code), $description);
 					header('location:'.base_url().'destination');
 				}
 				else{
@@ -51,10 +51,10 @@ class destination extends CI_Controller {
 
 			if ($this->form_validation->run() == TRUE){
 				extract($_POST);
-				$exists = $this->destinationmodel->exists($code, $id);
+				$exists = $this->destinationModel->exists($code, $id);
 
 				if(empty($exists)){
-					$this->destinationmodel->update($id, $code, $description);
+					$this->destinationModel->update($id, $code, $description);
 					header('location:'.base_url().'destination');
 				}
 				else{
@@ -63,12 +63,12 @@ class destination extends CI_Controller {
 			}
 		}
 
-		$data['data'] = $this->destinationmodel->get($id);
+		$data['data'] = $this->destinationModel->get($id);
 		$this->load->view('destination_update', $data);
 	}
 
 	public function delete($id){
-		$this->destinationmodel->delete($id);
+		$this->destinationModel->delete($id);
 		header('location:'.base_url().'destination');
 	}
 }

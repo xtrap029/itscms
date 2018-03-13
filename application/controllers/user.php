@@ -12,11 +12,11 @@ class user extends CI_Controller {
 
 		$this->load->helper(array('form', 'url'));
 		$this->load->library('form_validation');
-		$this->load->model('homemodel');
+		$this->load->model('homeModel');
 	}
 
 	public function index(){
-		$data['gospels'] = $this->homemodel->getGospels();
+		$data['gospels'] = $this->homeModel->getGospels();
 		$this->load->view('user',$data);
 	}
 
@@ -29,7 +29,7 @@ class user extends CI_Controller {
 			}
 			else{
 				extract($_POST);
-				$this->homemodel->addGospel($title,$content);
+				$this->homeModel->addGospel($title,$content);
 				header('location:index.php?/user/');
 			}
 		}
@@ -39,7 +39,7 @@ class user extends CI_Controller {
 	}
 
 	public function delete($id){
-		$this->homemodel->deleteGospel($id);
+		$this->homeModel->deleteGospel($id);
 		header('location:index.php?/user');
 	}
 
@@ -47,11 +47,11 @@ class user extends CI_Controller {
 		if($_POST){
 			///validation here
 			extract($_POST);
-			$this->homemodel->updateGospel($id,$title,$content);
+			$this->homeModel->updateGospel($id,$title,$content);
 			header('location:index.php?/user/edit/'.$id);
 		}
 		else{
-			$data['gospel'] = $this->homemodel->getGospel($id);
+			$data['gospel'] = $this->homeModel->getGospel($id);
 			$this->load->view('edit',$data);
 		}
 	}
