@@ -7,7 +7,7 @@ class destinationModel extends CI_Model {
         parent::__construct();
     }
 
-    function list(){
+    function lists(){
    		return $this->db->query("SELECT * FROM icms_destination WHERE status = 'A' ORDER BY status, id")->result();
     }
 

@@ -18,7 +18,7 @@ class destination extends CI_Controller {
 	}
 
 	public function index(){
-		$data['data'] = $this->destinationModel->list();
+		$data['data'] = $this->destinationModel->lists();
 		$this->load->view('destination_index', $data);
 	}
 
